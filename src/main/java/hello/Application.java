@@ -19,16 +19,16 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(final ApplicationContext context) {
-        return args -> {
-            System.out.println("Inspect the bean");
-
-            String[] beanNames = context.getBeanDefinitionNames();
-            Arrays.sort(beanNames);
-            for (String beanName : beanNames) {
-                System.out.println(beanName);
-            }
-        };
-    }
+//    @Bean
+//    public CommandLineRunner commandLineRunner(final ApplicationContext context) {
+//        return args -> {
+//            System.out.println("Inspect the bean");
+//
+//            String[] beanNames = context.getBeanDefinitionNames();
+//            Arrays.sort(beanNames);
+//            for (String beanName : beanNames) {
+//                System.out.println(beanName);
+//            }
+//        };
+//    }
 }

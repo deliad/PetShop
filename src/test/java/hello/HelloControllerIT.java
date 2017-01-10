@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import java.net.URL;
 
+import hello.model.Pet;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +14,6 @@ import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -41,7 +41,15 @@ public class HelloControllerIT {
     public void getHello() throws Exception {
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
-        assertThat(response.getBody(), equalTo("Greetings from Spring Boot!"));
+        assertThat(response.getBody(), equalTo("Greetings from Spring Boot! by Delia"));
+    }
+
+    @Test
+    public void getPet() throws Exception {
+        ResponseEntity<Pet> response = template.getForEntity("/pet/Cucu",
+                Pet.class);
+        Pet pet = response.getBody();
+        assertThat(pet.getName(), equalTo("Cucu"));
     }
 }
 
